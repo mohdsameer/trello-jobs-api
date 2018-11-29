@@ -7,8 +7,10 @@ class JobApplicationsController < ApplicationController
   def create
   	appliation = JobApplication.new(job_params)
   	if appliation.save
-  	   Trello::Card.create(name: appliation.name, desc: appliation.coverletter, list_id: params[:job_application][:list_id])
-  	   flash[:success] = "Applied successfully"
+  	   card = Trello::Card.create(name: appliation.name, desc: appliation.coverletter, list_id: params[:job_application][:list_id])
+  	   card.attributes[:member_ids] << Trello::Member.find(current_user.username).id
+       card.save
+       flash[:success] = "Applied successfully"
   	else
   		flash[:error] = "Something went wrong!"
   	end
