@@ -4,7 +4,6 @@ class SessionsController < ApplicationController
 
   def create
     auth = request.env["omniauth.auth"]
-    binding.pry
     users = User.where(uid: auth[:uid])
     if users.blank?
       user = User.create(name: auth[:info][:name], email: auth[:info][:email], trello_oauth_token: auth[:credentials][:token], trello_secret: auth[:credentials][:secret], uid: auth[:uid], username: auth[:info].nickname)
