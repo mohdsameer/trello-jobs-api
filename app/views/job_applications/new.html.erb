@@ -1,0 +1,16 @@
+
+<center>New Job application</center>
+
+<%= form_for @application do |f| %>
+  <%=f.label :name%>
+  <%=f.text_field :name, placeholder: "Name"%><br/><br/>
+  <%=f.label :email%>
+  <%=f.email_field :email, placeholder: "email"%><br/><br/>
+  <%=f.label :address%>
+  <%=f.text_area :address, placeholder: "Address"%><br/><br/>
+  <%=f.label :coverletter%>
+  <%=f.text_area :coverletter, placeholder: "coverletter"%><br/>
+  <%=f.hidden_field :job_id, value: params[:job_id]%>
+  <%=f.hidden_field :list_id, value: params[:list_id]%>
+  <%=f.submit :submit%>
+<%end%>

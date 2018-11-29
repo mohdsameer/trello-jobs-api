@@ -1,0 +1,10 @@
+
+<center>Post new job</center>
+
+<%= form_for @job do |f| %>
+  <%=f.label :title%>
+  <%=f.text_field :title, placeholder: "Name"%><br/><br/>
+  <%=f.label :title%>
+  <%=f.text_area :description, placeholder: "Description"%><br/>
+  <%=f.submit :submit%>
+<%end%>

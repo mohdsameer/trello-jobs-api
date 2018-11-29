@@ -1,0 +1,9 @@
+<center><h1>Welcome Trello Jobs</h1></center>
+<center>
+	<%= flash[:success] if flash[:success].present?%>
+	<%= flash[:error] if flash[:error].present?%>
+</center>
+<%= link_to 'Sign in with Trello', '/auth/trello' unless current_user.present? %><br/>
+<%= link_to 'Sign out', log_out_path if current_user.present?%><br/>
+<%= link_to "Jobs", jobs_path if current_user.present?%><br/>
+<%= link_to "Post New Jobs", new_job_path if current_user.present?%><br/>
